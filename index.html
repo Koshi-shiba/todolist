@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lamg="ja">
+<head>
+  <meta charset="utf-8">
+  <title>To Do List</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/7b1789a541.js" crossorigin="anonymous"></script>
+  <!--jQuery and Bootstrap-->
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+  <!--Moment.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
+  <!-- Tempus Dominus -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+
+
+</head>
+<body>
+ 
+ 
+
+
+  <div class="container">
+<!--Title row1-->
+    <div class="row border-bottom border-dark">
+      <div class="col-lg-3 ">Add task</div>
+      <div class="col-lg-3">Add deadline</div>
+      
+    </div>
+
+<!--form row-->
+    <div class="row mt-3">
+      <div class="col-3">
+        <input class="form-control " id = "TASK" type="text" placeholder="Task" text-decoration= "line-through">
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control datetimepicker-input" id="datetimepicker5" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="Deadline"/>
+      </div>
+      <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker5').datetimepicker();
+        });
+    </script>
+      <div class="col-1">
+        <button type="button" id = "addBtn" class="btn btn-outline-primary">Add</button>
+      </div>
+      <div class="col-1">
+        <i id = "deleteBtn" class="fas fa-trash-alt btn btn-lg py-1"></i>
+      </div>
+    </div>
+
+
+<!--Title row2-->
+    <div class="row border-bottom border-dark mt-3">
+      <div class="col-6 ">Task</div>
+
+    </div>
+
+
+<!--task list-->
+<div class="row mt-3 ">
+  <div class="col-12 ">
+    <ul id="uncomplitedTask">
+      <!--add task and deadline here-->
+    </ul>
+  </div>
+
+
+  </div>
+</div>
+  </div>
+
+
+  <script>
+    // add task 
+    $(function(){
+      $('#addBtn').click(function(e){
+        e.preventDefault();
+
+        if($('#TASK').val()==="" || $('#datetimepicker5').val()===""){
+          alert("add both task and deadline!!");
+          return;
+        }
+        $('#uncomplitedTask').append(
+          '<li class="mt-1 task"><input type="checkbox" class="mr-1"><input class="form-control-lg mr-1" type="text" value="'+$('#TASK').val()+'" >'
+        +'<input class="form-control-lg mr-1" type="text" value="'+$('#datetimepicker5').val()+'" >'
+        +'</li>');
+      });
+    });
+
+    // delete checked task 
+    $(function(){
+      $('#deleteBtn').click(function(){
+
+        $('#uncomplitedTask li').has('input[type=checkbox]:checked').remove();
+      });
+    });
+  </script>
+</body>
+</html>
