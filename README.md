@@ -1,6 +1,6 @@
 # todolist
+Enter task and deadline in form.
+When you click "add button", they will be added into list.
+You can edit added list any time.
 
-フォームにタスクと締め切りを入力してaddボタンを押すとリストに追加されます．
-追加したタスクの編集はいつでもできます．
-
-チェックボックスにチェックしてdeleteボタンを押すと，選択したタスクを削除できます．
+When you click "delete button", checked list will be deleted.
